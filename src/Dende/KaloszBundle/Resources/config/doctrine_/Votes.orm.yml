@@ -1,0 +1,29 @@
+Dende\KaloszBundle\Entity\Votes:
+    type: entity
+    table: votes
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+    oneToOne:
+        user:
+            targetEntity: Users
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        analysis:
+            targetEntity: Analysis
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                analysis_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

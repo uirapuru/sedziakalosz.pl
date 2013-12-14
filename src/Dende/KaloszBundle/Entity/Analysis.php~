@@ -1,0 +1,42 @@
+<?php
+
+namespace Dende\KaloszBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Analysis
+ *
+ * @ORM\Table(name="analysis")
+ * @ORM\Entity
+ */
+class Analysis
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var \Dende\KaloszBundle\Entity\Movies
+     *
+     * @ORM\OneToOne(targetEntity="Dende\KaloszBundle\Entity\Movies")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="movie_id", referencedColumnName="id", unique=true)
+     * })
+     */
+    private $movie;
+
+
+}

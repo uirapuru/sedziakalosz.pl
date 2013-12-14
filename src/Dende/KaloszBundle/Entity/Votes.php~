@@ -1,0 +1,45 @@
+<?php
+
+namespace Dende\KaloszBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Votes
+ *
+ * @ORM\Table(name="votes")
+ * @ORM\Entity
+ */
+class Votes
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $id;
+
+    /**
+     * @var \Dende\KaloszBundle\Entity\Users
+     *
+     * @ORM\OneToOne(targetEntity="Dende\KaloszBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=true)
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Dende\KaloszBundle\Entity\Analysis
+     *
+     * @ORM\OneToOne(targetEntity="Dende\KaloszBundle\Entity\Analysis")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="analysis_id", referencedColumnName="id", unique=true)
+     * })
+     */
+    private $analysis;
+
+
+}

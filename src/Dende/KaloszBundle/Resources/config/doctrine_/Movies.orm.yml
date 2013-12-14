@@ -1,0 +1,58 @@
+Dende\KaloszBundle\Entity\Movies:
+    type: entity
+    table: movies
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+        url:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        autorId:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+            column: autor_id
+        title:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        description:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        analysis:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        judgeName:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+            column: judge_name
+        eventDescription:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+            column: event_description
+    oneToOne:
+        discipline:
+            targetEntity: Discipline
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                discipline_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

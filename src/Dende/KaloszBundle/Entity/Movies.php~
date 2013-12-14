@@ -1,0 +1,84 @@
+<?php
+
+namespace Dende\KaloszBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Movies
+ *
+ * @ORM\Table(name="movies")
+ * @ORM\Entity
+ */
+class Movies
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=45, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="autor_id", type="string", length=45, nullable=true)
+     */
+    private $autorId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=45, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="analysis", type="string", length=45, nullable=true)
+     */
+    private $analysis;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="judge_name", type="string", length=45, nullable=true)
+     */
+    private $judgeName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="event_description", type="string", length=45, nullable=true)
+     */
+    private $eventDescription;
+
+    /**
+     * @var \Dende\KaloszBundle\Entity\Discipline
+     *
+     * @ORM\OneToOne(targetEntity="Dende\KaloszBundle\Entity\Discipline")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="discipline_id", referencedColumnName="id", unique=true)
+     * })
+     */
+    private $discipline;
+
+
+}
