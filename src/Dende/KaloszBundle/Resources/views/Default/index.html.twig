@@ -1,1 +1,14 @@
-Hello {{ name }}!
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+<div class="container-fluid" id="bigButtons">
+    <ul class="inline row-fluid">
+        <li class="btn span4">1. Dodaj się</li>
+        <li class="btn span4">2. <a href="{{ path("movie_new") }}">Wstaw film</a></li>
+        
+        <li class="btn span4">3. Dyskutuj</li>
+    </ul>
+</div>
+
+{% endblock body %}

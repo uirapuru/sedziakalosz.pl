@@ -2,61 +2,65 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Polmedia.pl - {% block title %}Welcome!{% endblock %}</title>
+        <title>Sędzia Kalosz! | {% block title %}Welcome!{% endblock %}</title>
 
         {% block stylesheets %}
         {% stylesheets
-            'bundles/polmedia/less/style.less'
-            'bundles/polmedia/css/bootstrap.css'
-            'bundles/polmedia/css/prettyPhoto.css'
+            'bundles/kalosz/less/style.less'
+            'bundles/kalosz/css/bootstrap.css'
+            'bundles/kalosz/css/prettyPhoto.css'
         filter='less,cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
         {% endblock stylesheets %}
-    
+
     </head>
     <body>
         <div id="top" class="column">
-            <nav>
+            <nav>{#
                 <a href="{{ path("main_page") }}">
-                {% image '@PolmediaBundle/Resources/public/images/Logo-glowne.png' %}
+                {% image '@KaloszBundle/Resources/public/images/Logo-glowne.png' %}
                     <img src="{{ asset_url }}" alt="Example" />
-                {% endimage %}
-                </a>
+                {% endimage %} 
+                </a>#}
 
                 {% set route = app.request.attributes.get('_route') %}
 
+                {#
                 <ul class="inline">
                     <li class="{% if route == 'main_page' %}active{% endif %}"><a href="{{ path("main_page")}}">main page</a></li>
                     <li class="{% if route == 'static' %}active{% endif %}"><a href="{{ path("static", {slug: "polmedia"})}}">polmedia</a></li>
                     <li class="{% if route == 'categories' or route == 'video' or route=='category' %}active{% endif %}"><a href="{{ path("categories")}}">our catalog</a></li>
                     <li class="{% if route == 'contact' %}active{% endif %}"><a href="{{ path("contact")}}">contact</a></li>
                 </ul>
+#}
             </nav>
             <div id="ui-bar"></div>
         </div>
         <div id="middle" class="column">
-            {{ render(controller("PolmediaBundle:Default:carousel")) }}
+            <h1>Daj sędziemu<br />żółtą kartkę</h1>
         </div>
         <div id="container">
             <div id="content" class="column">
             {% block body %}{% endblock %}  
             </div>
         </div>
-        <div id="footer" class="column">{{ "now"|date("Y") }} POLMEDIA. All rights Reserved.</div>
 
         {% javascripts
-            '@PolmediaBundle/Resources/public/js/jquery-1.10.2.js'
-            '@PolmediaBundle/Resources/public/js/jquery-migrate-1.2.1.js'
-            '@PolmediaBundle/Resources/public/js/bootstrap.js'
-            '@PolmediaBundle/Resources/public/js/jquery.prettyPhoto.js'
+            '@KaloszBundle/Resources/public/js/jquery-1.10.2.js'
+            '@KaloszBundle/Resources/public/js/jquery-migrate-1.2.1.js'
+            '@KaloszBundle/Resources/public/js/bootstrap.js'
+            '@KaloszBundle/Resources/public/js/jquery.prettyPhoto.js'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
+
+        {#
         {% javascripts
-            '@PolmediaBundle/Resources/public/coffee/main.coffee'
+            '@KaloszBundle/Resources/public/coffee/main.coffee'
         filter="coffee" %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
+        #}
     </body>
 </html>

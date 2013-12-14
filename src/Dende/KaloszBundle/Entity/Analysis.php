@@ -17,14 +17,14 @@ class Analysis
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     * @ORM\Column(name="description", type="string", length=320, nullable=true)
      */
     private $description;
 
@@ -37,8 +37,6 @@ class Analysis
      * })
      */
     private $movie;
-
-
 
     /**
      * Set id

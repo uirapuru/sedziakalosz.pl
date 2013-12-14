@@ -10,14 +10,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="movies")
  * @ORM\Entity
  */
-class Movie
-{
+class Movie {
+
     /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -31,28 +31,24 @@ class Movie
     /**
      * @var string
      *
-     * @ORM\Column(name="autor_id", type="string", length=45, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Dende\KaloszBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="author_id", referencedColumnName="id", unique=true)
+     * })
      */
-    private $autorId;
+    private $author;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=45, nullable=true)
-     */
-    private $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     * @ORM\Column(name="description", type="string", length=160, nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="analysis", type="string", length=45, nullable=true)
+     * @ORM\Column(name="analysis", type="string", length=320, nullable=true)
      */
     private $analysis;
 
@@ -80,18 +76,15 @@ class Movie
      */
     private $discipline;
 
-
-
     /**
      * Set id
      *
      * @param integer $id
      * @return Movie
      */
-    public function setId($id)
-    {
+    public function setId($id) {
         $this->id = $id;
-    
+
         return $this;
     }
 
@@ -100,8 +93,7 @@ class Movie
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -111,10 +103,9 @@ class Movie
      * @param string $url
      * @return Movie
      */
-    public function setUrl($url)
-    {
+    public function setUrl($url) {
         $this->url = $url;
-    
+
         return $this;
     }
 
@@ -123,21 +114,19 @@ class Movie
      *
      * @return string 
      */
-    public function getUrl()
-    {
+    public function getUrl() {
         return $this->url;
     }
 
     /**
      * Set autorId
      *
-     * @param string $autorId
+     * @param string $authorId
      * @return Movie
      */
-    public function setAutorId($autorId)
-    {
-        $this->autorId = $autorId;
-    
+    public function setAuthorId($authorId) {
+        $this->authorId = $authorId;
+
         return $this;
     }
 
@@ -146,32 +135,8 @@ class Movie
      *
      * @return string 
      */
-    public function getAutorId()
-    {
-        return $this->autorId;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return Movie
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
+    public function getAuthorId() {
+        return $this->authorId;
     }
 
     /**
@@ -180,10 +145,9 @@ class Movie
      * @param string $description
      * @return Movie
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
-    
+
         return $this;
     }
 
@@ -192,8 +156,7 @@ class Movie
      *
      * @return string 
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -203,10 +166,9 @@ class Movie
      * @param string $analysis
      * @return Movie
      */
-    public function setAnalysis($analysis)
-    {
+    public function setAnalysis($analysis) {
         $this->analysis = $analysis;
-    
+
         return $this;
     }
 
@@ -215,8 +177,7 @@ class Movie
      *
      * @return string 
      */
-    public function getAnalysis()
-    {
+    public function getAnalysis() {
         return $this->analysis;
     }
 
@@ -226,10 +187,9 @@ class Movie
      * @param string $judgeName
      * @return Movie
      */
-    public function setJudgeName($judgeName)
-    {
+    public function setJudgeName($judgeName) {
         $this->judgeName = $judgeName;
-    
+
         return $this;
     }
 
@@ -238,8 +198,7 @@ class Movie
      *
      * @return string 
      */
-    public function getJudgeName()
-    {
+    public function getJudgeName() {
         return $this->judgeName;
     }
 
@@ -249,10 +208,9 @@ class Movie
      * @param string $eventDescription
      * @return Movie
      */
-    public function setEventDescription($eventDescription)
-    {
+    public function setEventDescription($eventDescription) {
         $this->eventDescription = $eventDescription;
-    
+
         return $this;
     }
 
@@ -261,8 +219,7 @@ class Movie
      *
      * @return string 
      */
-    public function getEventDescription()
-    {
+    public function getEventDescription() {
         return $this->eventDescription;
     }
 
@@ -272,10 +229,10 @@ class Movie
      * @param \Dende\KaloszBundle\Entity\Discipline $discipline
      * @return Movie
      */
-    public function setDiscipline(\Dende\KaloszBundle\Entity\Discipline $discipline = null)
-    {
+    public function setDiscipline(\Dende\KaloszBundle\Entity\Discipline $discipline =
+    null) {
         $this->discipline = $discipline;
-    
+
         return $this;
     }
 
@@ -284,8 +241,8 @@ class Movie
      *
      * @return \Dende\KaloszBundle\Entity\Discipline 
      */
-    public function getDiscipline()
-    {
+    public function getDiscipline() {
         return $this->discipline;
     }
+
 }

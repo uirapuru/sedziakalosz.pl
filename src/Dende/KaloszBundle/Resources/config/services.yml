@@ -1,0 +1,10 @@
+parameters:
+    movie.class:                Dende\KaloszBundle\Entity\Movie
+    movie_repository.class:     Dende\KaloszBundle\Entity\MovieRepository
+
+services:
+    movie_repository:
+        class:                  Doctrine\Common\Persistence\ObjectRepository
+        factory_service:        doctrine
+        factory_method:         getRepository
+        arguments:              [ "%movie.class%" ]
